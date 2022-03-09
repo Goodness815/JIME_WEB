@@ -1,0 +1,48 @@
+$text-color: #1a429c;
+$sec-text-color:rgb(170, 170, 170);
+$primary-color: #1976d2;
+
+
+.logo-cont-a {
+    // margin-right: 80px;
+    color: $text-color;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "alata"; 
+    background-color: rgba(255, 255, 255, 0.747);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+}
+
+.navbar-nav-scroll {
+    overflow: visible !important;
+}
+
+
+
+.add-products {
+    font-family:"alata";
+    width: 100%;
+
+    input {
+        background-color:#1a419c6b;
+        border: none;
+        color: white;
+        padding: 10px 5px;
+        border-radius: 2px;
+        width: 100%;
+    }
+
+    :focus {
+        outline: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .my-2 {
+        // margin-top: 0.5rem!important;
+        margin-bottom: 2.5rem!important;
+    }
+}

@@ -1,0 +1,150 @@
+$text-color: #1a429c;
+$sec-text-color:rgb(170, 170, 170);
+$primary-color: #1976d2;
+$log-sign : #182030 ;
+
+.topnav-cont {
+    // background-color: rgb(255, 255, 255);
+    padding: 10px 20px ;
+    position: fixed;
+    // height: 80px;
+    top: 0;
+    z-index: 100;
+    background-color: transparent;
+    backdrop-filter: blur(500px);
+    width: 96%;
+    // background-image: url(https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+    // opacity: 5;
+    background-color: rgba(255, 255, 255, 0.37);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border: 2px solid red;
+    margin-bottom: 50px;
+}
+
+// @media (max-width: 534px)
+//  {
+//     .topnav-cont {
+//         z-index: 0 !important;
+//         width: 100%;
+//     }
+// }
+
+
+.search-cont {
+    background-color: white;
+    width: 50%;
+    // border-radius: 5px;
+    display:flex;
+    -webkit-box-shadow: 5px 5px 15px -8px #000000; 
+box-shadow: 5px 5px 15px -8px #000000;
+
+    input {
+        width: 92%;
+        border: none;
+        // height: 40px;
+        padding: 10px 0px;
+        border-radius: 5px;
+        padding-left: 20px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    svg {
+        // color: black !important;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+
+    }
+}
+
+.search-icon {
+    background-color: #182030;
+    width: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.account-bar {
+    display:flex;
+    justify-content: center !important;
+    align-items: center !important;
+    h6 {
+        margin-right:10px;
+        margin-top: 5px;
+    }
+
+    svg {
+        color: rgb(0, 0, 0) !important;
+        vertical-align: middle;
+    }
+
+
+    .log-btn-top {
+        border: none;
+        font-family: "alata";
+        padding: 10px 20px;
+        background-color: $log-sign;
+        color: white;
+        margin-left: 20px;
+        text-decoration: none;
+    }
+
+    .sign-btn-top {
+        font-family: "alata";
+        padding: 10px 20px;
+        background-color: white;
+        color: $log-sign; 
+        border: none;
+        margin-left: 20px;
+        text-decoration: none;
+    }
+}
+
+
+@media (max-width: 840px) {
+    .search-cont {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 712px){
+    .account-bar {
+        display: none;
+    }
+
+    .search-cont {
+        width: 90%;
+    }
+}
+
+@media (max-width: 534px){
+
+    .topnav-cont {
+        width: 100%;
+    }
+
+    .search-cont {
+        width: 100%;
+        margin-left: 40px;
+
+        input {
+            width: 85%;
+        }
+
+        .search-icon {
+            width: 15%;
+        }
+    }
+
+
+}
+

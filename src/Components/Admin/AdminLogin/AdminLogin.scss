@@ -1,0 +1,21 @@
+.admin-form {
+
+    width: 40%;
+
+    .admin-text-input {
+        display: flex;
+        flex-direction: column !important;
+    }
+}
+
+.a-l {
+    color: white;
+    font-family: "Alata";
+}
+
+
+@media (max-width: 701px) {
+    .admin-form {
+        width: 70%;
+    }
+}

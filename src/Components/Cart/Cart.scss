@@ -1,0 +1,89 @@
+.cart-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 96%;
+    margin-left:4%;
+    // background-color: #1820302d;
+
+}
+
+@media (max-width: 534px)
+ {
+    .cart-cont {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+
+.cart-w-c {
+    margin-top: 80px;
+}
+
+.cart-card {
+    border: 2px solid rgb(194, 194, 194);
+}
+
+
+.css-1b6n4o1 {
+    width: 50% !important;
+}
+
+
+.css-1b6n4o1 {
+    h5 {
+        font-family: "alata";
+        text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    }
+
+    p {
+        font-family: "alata";
+        text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    }
+}
+
+
+// GRIDING MY CART ITEM
+.cart-w-c {
+    width: 95%;
+    margin-left: 3%;
+    display: grid;
+    grid-template-columns: 47.5% 47.5% ;
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 30px;
+    grid-column-gap: 30px ;
+}
+
+
+@media (max-width: 858px) {
+.cart-w-c {
+    display: grid;
+    grid-template-columns: 80%;
+}
+}
+
+@media (max-width: 530px) {
+    .cart-w-c {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-right: 3%;
+    }
+
+    .css-1b6n4o1 {
+        h5 {
+            font-size: 20px !important;
+        }
+
+        p {
+            font-size: 13px !important;
+        }
+    }
+    }
+

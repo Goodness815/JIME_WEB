@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "./Components/Login/Login";
+import Signup from "./Components/Signup/Signup";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Components/Home/Home";
+import Layout from "./Components/Layout";
+import SingleProduct from "./Components/Product/SingleProduct";
+import Cart from "./Components/Cart/Cart";
+import AdminLogin from "./Components/Admin/AdminLogin/AdminLogin";
+import AdminProducts from "./Components/Admin/AdminProducts/AdminProducts";
+import Stores from "./Components/Stores/Stores";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+            exact
+          />
+                    <Route path="/productsadmin" element={<AdminProducts />} exact />
+                    <Route path="/store" element={<Stores />} exact />
+
+          <Route path="/product" element={<SingleProduct />} exact />
+          <Route path="/cart" element={<Cart />} exact />
+          <Route path="/admin" element={<AdminLogin />} exact />
+
+
+          <Route path="/Login" element={<Login />} exact />
+          <Route path="/Signup" element={<Signup />} exact />
+        </Routes>
+      </Router>
     </div>
   );
 }
