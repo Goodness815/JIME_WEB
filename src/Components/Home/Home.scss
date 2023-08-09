@@ -98,17 +98,16 @@
   cursor: pointer;
 }
 
-.css-ad7p68-MuiPaper-root-MuiCard-root {
+.each-product .MuiPaper-root-MuiCard-root {
   box-shadow: none !important;
 }
 
-.css-r40f8v-MuiTypography-root {
+.each-product .MuiTypography-root {
   text-overflow: ellipsis !important;
   overflow: hidden !important;
   white-space: nowrap !important;
 }
-
-.css-h93ljk-MuiTypography-root {
+ .each-product .MuiTypography-h5 {
   font-size: 15px !important;
   font-weight: 500 !important;
   text-overflow: ellipsis !important;
@@ -116,16 +115,16 @@
   white-space: nowrap !important;
 }
 
-.css-18k87ye-MuiTypography-root {
+.each-product .MuiTypography-h6 {
   font-size: 15px !important;
   font-style: italic !important;
 }
 
-.css-1t6e9jv-MuiCardActions-root {
+.each-product .MuiCardActions-root {
   padding-top: 0px !important;
 }
 
-.css-46bh2p-MuiCardContent-root {
+.each-product .MuiCardContent-root {
   padding-bottom: 0px !important;
 }
 
