@@ -1,9 +1,8 @@
 import React from "react";
 import "./Signup.scss";
 import TextField from "@mui/material/TextField";
-import { createTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -40,22 +39,6 @@ const Signup = () => {
     event.preventDefault();
   };
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        light: "#757ce8",
-        main: "#3f50b5",
-        dark: "#002884",
-        contrastText: "#fff",
-      },
-      secondary: {
-        light: "#fff",
-        main: "#f44336",
-        dark: "#ba000d",
-        contrastText: "#000",
-      },
-    },
-  });
 
   return (
     <div className="container-sign">

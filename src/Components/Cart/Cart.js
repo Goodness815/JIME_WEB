@@ -1,18 +1,13 @@
 import React, {useEffect} from "react";
-import "./Cart.scss";
 import Footer from "../Footer/Footer";
+import "./Cart.scss";
 
 // MATERIAL UI IMPORTS
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
 import Sidenav from "../Sidenav/Sidenav";
 import Topnav from "../Topnav/Topnav";
 
@@ -22,9 +17,6 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import MailIcon from "@mui/icons-material/Mail";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 const Cart = () => {
 
@@ -36,14 +28,6 @@ const Cart = () => {
 
   // QUANTITY INCREMENT
   const [count, setCount] = React.useState(1);
-  const [invisible, setInvisible] = React.useState(false);
-
-  const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-  };
-
-  const theme = useTheme();
-
   const products = [
     {
       store: "Kunda Store",
@@ -151,7 +135,7 @@ const Cart = () => {
 
         <div className="cart-w-c">
           {products.map((allProduct) => {
-            const { name, size, price, description } = allProduct;
+            const { name, price, description } = allProduct;
             return (
               <Card
                 className="cart-card"

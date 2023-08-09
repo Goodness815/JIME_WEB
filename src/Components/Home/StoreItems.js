@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 import "./Home.scss";
-import { useParams, useNavigate } from "react-router-dom";
 
 // MATERIAL UI IMPORTS
 import Card from "@mui/material/Card";
@@ -11,11 +11,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const StoreItems = () => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
 
   let navigate = useNavigate();
 
@@ -97,7 +92,7 @@ const StoreItems = () => {
       <hr />
       <div className="stores-cont">
         {allProduct.map((allProduct) => {
-          const { id, primary, secondary, price } = allProduct;
+          const { primary, secondary, price } = allProduct;
           return (
             <div className="each-product">
               <Card onClick={(e) => gotoProduct()} sx={{ maxWidth: 225, cursor: "pointer" }}>
@@ -124,7 +119,9 @@ const StoreItems = () => {
                   <Button
                     onClick={(e) => gotoCart()}
                     size="small"
-                    variant="contained"
+                    variant="light"
+                    style={{ backgroundColor: '#182030' }}
+                    className="w-100 text-white"
                   >
                     Add to cart
                   </Button>

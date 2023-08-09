@@ -1,8 +1,8 @@
 import React from "react";
-import "./Topnav.scss";
 import SearchIcon from "@mui/icons-material/Search";
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { Link } from "react-router-dom";
+import "./Topnav.scss";
 
 
 
@@ -17,8 +17,8 @@ const Topnav = () => {
       </div>
 
       <div className="account-bar">
-
-        {/* <h6>Adenuga</h6>
+{/* 
+        <h6>Adenuga</h6>
         <AccountCircleOutlinedIcon/> */}
 
         {/* IF USER IS NOT LOGGED IN SO CONDITIONAL STATEMENT COMES IN HERE */}

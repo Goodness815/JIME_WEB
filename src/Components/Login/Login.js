@@ -1,9 +1,8 @@
 import React from "react";
-import "./Login.scss";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import { createTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
+import "./Login.scss";
 
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -37,22 +36,7 @@ const Login = () => {
     event.preventDefault();
   };
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        light: "#757ce8",
-        main: "#3f50b5",
-        dark: "#002884",
-        contrastText: "#fff",
-      },
-      secondary: {
-        light: "#fff",
-        main: "#f44336",
-        dark: "#ba000d",
-        contrastText: "#000",
-      },
-    },
-  });
+
 
   return (
     <div className="container-log">
@@ -84,7 +68,7 @@ const Login = () => {
             />
 
             <OutlinedInput
-            fullWidth
+              fullWidth
               // sx={{ width: 280, outline: "white" }}
               className="margin-log"
               id="outlined-adornment-password"

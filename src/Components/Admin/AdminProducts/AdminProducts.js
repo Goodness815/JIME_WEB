@@ -679,7 +679,7 @@ const AdminProducts = () => {
 
       <div className="admin-p-c">
         {products.map((allProduct) => {
-          const { name, size, price, description } = allProduct;
+          const { name, price, description } = allProduct;
           return (
             <div className="each-apc">
               <Card sx={{ maxWidth: 345 }}>
