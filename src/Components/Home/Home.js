@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.scss";
 
 // BOOTSTRAP IMPORTS
 import Carousel from "react-bootstrap/Carousel";
@@ -11,6 +10,7 @@ import StoreItems from "./StoreItems";
 import Topnav from "../Topnav/Topnav";
 import Sidenav from "../Sidenav/Sidenav";
 import Footer from "../Footer/Footer";
+import "./Home.scss";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
