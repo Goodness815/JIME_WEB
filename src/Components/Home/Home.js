@@ -4,7 +4,6 @@ import "./Home.scss";
 
 // BOOTSTRAP IMPORTS
 import Carousel from "react-bootstrap/Carousel";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // MATERIAL UI IMPORTS
 import Button from "@mui/material/Button";

@@ -1,4 +1,6 @@
+
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -9,6 +11,7 @@ import Cart from "./Components/Cart/Cart";
 import AdminLogin from "./Components/Admin/AdminLogin/AdminLogin";
 import AdminProducts from "./Components/Admin/AdminProducts/AdminProducts";
 import Stores from "./Components/Stores/Stores";
+
 
 function App() {
   return (
