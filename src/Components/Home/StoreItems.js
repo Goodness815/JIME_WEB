@@ -42,7 +42,7 @@ const StoreItems = () => {
     setCurrentPageData(pageData);
     // Scroll to 160vh from the top of the page when a new page is clicked
     const targetOffset = 50 * window.innerHeight / 100; // Calculate the offset in pixels
-    if (pageNumber != 1) {
+    if (pageNumber !== 1) {
       window.scrollTo({
         top: targetOffset,
         behavior: 'smooth', // Use 'smooth' for smooth scrolling
