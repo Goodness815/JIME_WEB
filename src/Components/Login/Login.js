@@ -4,52 +4,33 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import "./Login.scss";
 
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 const Login = () => {
   // SHOW AND HIDE PASSWORD
 
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
+  // const [values, setValues] = React.useState({
+  //   amount: "",
+  //   password: "",
+  //   weight: "",
+  //   weightRange: "",
+  //   showPassword: false,
+  // });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
+  // const handleChange = (prop) => (event) => {
+  //   setValues({ ...values, [prop]: event.target.value });
+  // };
 
 
   return (
     <div className="container-log">
       <div className="top-nav">
-        <div className="logo">ST</div>
+        {/* <div className="logo">ST</div> */}
         <Link to="/">Home</Link>
-        <Link to="/Signup">Join</Link>
+        {/* <Link to="/Signup">Join</Link> */}
       </div>
 
       <div className="login-cont">
         <div className="login-whole-cont">
           <div className="top-log-in">
-            <h5>START FOR FREE</h5>
             <h1>
               Welcome back <div className="full-stop"></div>{" "}
             </h1>
@@ -66,31 +47,14 @@ const Login = () => {
               label="Email"
               variant="outlined"
             />
-
-            <OutlinedInput
+            <TextField
               fullWidth
-              // sx={{ width: 280, outline: "white" }}
-              className="margin-log"
-              id="outlined-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
+              id="outlined-basic"
               label="Password"
+              variant="outlined"
+              className="passwordField"
             />
-
-            <Button fullWidth size="large" variant="contained">
+            <Button fullWidth size="large" variant="contained" style={{ backgroundColor: '#182030' }}>
               Login
             </Button>
           </form>

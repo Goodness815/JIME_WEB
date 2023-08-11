@@ -94,14 +94,11 @@ const Glasses = () => {
           const { primary, secondary, price } = allProduct;
           return (
             <div className="each-product">
-              <Card
-                onClick={(e) => gotoProduct()}
-                sx={{ maxWidth: 225, cursor: "pointer" }}
-              >
+              <Card onClick={(e) => gotoProduct()} sx={{ maxWidth: 225, cursor: "pointer" }}>
                 <CardMedia
                   component="img"
                   height="140"
-                  image="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGdsYXNzZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+                  image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                   alt="green iguana"
                 />
                 <CardContent>
@@ -117,16 +114,18 @@ const Glasses = () => {
                     &#8358; {price}
                   </Typography>
                 </CardContent>
+                <CardActions>
+                  <Button
+                    onClick={(e) => gotoCart()}
+                    size="small"
+                    variant="light"
+                    style={{ backgroundColor: '#182030' }}
+                    className="w-100 text-white"
+                  >
+                    Add to cart
+                  </Button>
+                </CardActions>
               </Card>
-              <CardActions>
-                <Button
-                  onClick={(e) => gotoCart()}
-                  size="small"
-                  variant="contained"
-                >
-                  Add to cart
-                </Button>
-              </CardActions>
             </div>
           );
         })}

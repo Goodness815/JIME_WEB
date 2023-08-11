@@ -1,13 +1,8 @@
 import React from "react";
-import "./Signup.scss";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import "./Signup.scss";
 
 const Signup = () => {
 
@@ -16,37 +11,28 @@ const Signup = () => {
   // SHOW AND HIDE PASSWORD
 
 
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
+  // const [values, setValues] = React.useState({
+  //   amount: "",
+  //   password: "",
+  //   weight: "",
+  //   weightRange: "",
+  //   showPassword: false,
+  // });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  // const handleChange = (prop) => (event) => {
+  //   setValues({ ...values, [prop]: event.target.value });
+  // };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
+ 
 
   return (
     <div className="container-sign">
 
       <div className="top-nav">
-        <div className="logo">ST</div>
+        {/* <div className="logo">ST</div> */}
         <Link to="/">Home</Link>
-        <Link to="/Signup">Join</Link>
+        {/* <Link to="/Signup">Join</Link> */}
         
       </div>
 
@@ -54,7 +40,7 @@ const Signup = () => {
 
         <div className="signup-whole-cont">
           <div className="top-sign-up">
-            <h5>START FOR FREE</h5>
+            {/* <h5>START FOR FREE</h5> */}
             <h1>
               Create new account <div className="full-stop"></div>{" "}
             </h1>
@@ -98,6 +84,13 @@ const Signup = () => {
                 label="Phone Number"
                 variant="outlined"
               />
+              <TextField
+                sx={{ width: 280 }}
+                id="outlined-basic"
+                label="Password"
+                className="margin-form"
+                variant="outlined"
+              />
 {/* 
               <TextField
                 id="outlined-basic"
@@ -106,31 +99,11 @@ const Signup = () => {
               /> */}
 
 
-<OutlinedInput
 
-sx={{ width: 280, outline: "white" }}
-className="margin-form"
-            id="outlined-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
             </div>
 
-            <Button fullWidth size="large" variant="contained">Sign Up</Button>
+            <Button fullWidth size="large" variant="contained" style={{ backgroundColor: '#182030' }}
+            >Sign Up</Button>
           </form>
         </div>
       </div>

@@ -51,9 +51,8 @@ const Home = () => {
                   <Button
                     onClick={(e) => gotoSignup()}
                     variant="contained"
-                    className="text-white"
+                    className="text-white bannerButton"
                     style={{ backgroundColor: '#182030' }}
-                    sx={{ marginTop: "30px" }}
                   >
                     Get Started
                   </Button>

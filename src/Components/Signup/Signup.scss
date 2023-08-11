@@ -1,222 +1,204 @@
-
 $text-color: #1a429c;
-$sec-text-color:rgb(170, 170, 170);
-
-
+$sec-text-color: rgb(170, 170, 170);
 
 .signup-cont {
+  padding-left: 5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  // height: 95vh;
+  margin-top: 13vh;
 
-    padding-left: 5%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center ;
-    // height: 95vh;
-    margin-top: 13vh;
+  font-family: "Ubuntu", sans-serif;
 
-    font-family: 'Ubuntu', sans-serif;
-
-    color: white;
-    // border: 2px solid red;
-    // background: rgb(27,42,74);
-
-
-
+  color: white;
+  // border: 2px solid red;
+  // background: rgb(27,42,74);
 }
 
 .top-nav {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 20px;
-    padding-left: 7%;
-    
-    a {
-        margin-right: 80px;
-        color: $sec-text-color;
-        text-decoration: none;
-        font-size: 15px;
-        font-family: "alata";
-    }
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 7%;
 
-    .logo {
-        margin-right: 80px;
-        color: rgb(255, 255, 255);
-        text-decoration: none;
-        font-size: 20px;
-        font-family: "alata"; 
-        background-color: $text-color;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-    }
+  a {
+    margin-right: 80px;
+    color: $sec-text-color;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "alata";
+  }
+
+  .logo {
+    margin-right: 80px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "alata";
+    background-color: $text-color;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .container-sign {
-    height: 100vh;
-    width: 100%;
-        background: linear-gradient(50deg, rgba(27,42,74,1) 52%, rgba(89,91,99,0.5522584033613445) 100%),  url(https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c3RvcmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+      50deg,
+      rgba(0, 0, 0, 0.904) 52%,
+      rgba(89, 91, 99, 0.5522584033613445) 100%
+    ),
+    url(https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c3RvcmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .signup-whole-cont {
-    display: flex;
-    flex-direction: column;
-    // border-radius: 30px;
-    width: 50%;
-    padding: 30px;
-
+  display: flex;
+  flex-direction: column;
+  // border-radius: 30px;
+  width: 50%;
+  padding: 30px;
 }
 
-
 .margin-form {
-    margin-left: 20px !important;
+  margin-left: 20px !important;
 }
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border-color: white !important;
-    color: white !important;
-    // border-radius: 0px !important;
+  border-color: white !important;
+  color: white !important;
+  // border-radius: 0px !important;
 }
 
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-    color: white !important;
+  color: white !important;
 }
-
 
 .top-sign-up {
-    font-family: 'alata';
-    h5 {
-        font-weight: 300 !important;
-        margin-bottom: 10px;
-        font-size: 17px;
-        color: $sec-text-color;
+  font-family: "alata";
+  h5 {
+    font-weight: 300 !important;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: $sec-text-color;
+  }
+
+  h1 {
+    font-size: 50px;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .full-stop {
+      background-color: #182030;
+      width: 20px !important;
+      height: 20px !important;
+      margin-bottom: 12px;
+      margin-left: 10px;
+      border-radius: 50%;
     }
+  }
 
-    h1 {
-        font-size: 50px;
-        font-weight: 500;
-        width: 100%;
-        display: flex;
+  p {
+    margin-top: 10px;
+    display: flex;
+    font-weight: 300;
+    color: $sec-text-color;
+    font-family: "Varta", sans-serif;
 
-        justify-content: flex-start;
-        align-items: flex-end;
-
-
-        .full-stop {
-            background-color: $text-color;
-            width: 20px !important;
-            height: 20px !important;
-            margin-bottom: 12px;
-            margin-left: 10px;
-            border-radius: 50%;
-        }
+    .log-in-sign {
+      margin-left: 10px;
+      color: $text-color;
+      cursor: pointer;
     }
-
-    p {
-        margin-top: 10px;
-        display: flex;
-        font-weight: 300;
-        color: $sec-text-color;
-        font-family: 'Varta', sans-serif;
-
-        .log-in-sign {
-            margin-left: 10px;
-            color: $text-color;
-            cursor: pointer;
-
-        }
-    }
+  }
 }
-
-
 
 // https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c3RvcmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60
 
-
 .signup-form {
-    width: 80%;
+  width: 80%;
 }
 
 .sign-first-last {
-    width: 100%;
-    display: flex;
-    color: white !important;
-    justify-content: space-between;
-    margin: 15px 0px;
+  width: 100%;
+  display: flex;
+  color: white !important;
+  justify-content: space-between;
+  margin: 15px 0px;
 }
 
 #outlined-basic {
-    color: white !important;
+  color: white !important;
 }
-
 
 @media (max-width: 1200px) {
-    .signup-whole-cont {
-        width: 70%;
-    }
+  .signup-whole-cont {
+    width: 70%;
+  }
 }
-
 
 @media (max-width: 876px) {
-    .signup-whole-cont {
-        width: 90%;
-    }
+  .signup-whole-cont {
+    width: 90%;
+  }
 }
-
 
 @media (max-width: 650px) {
-    .signup-whole-cont {
-        width: 93%;
-        // border: 2px solid red;
-    }
+  .signup-whole-cont {
+    width: 93%;
+    // border: 2px solid red;
+  }
 
-    .signup-form {
-        width: 100%;
-    }
+  .signup-form {
+    width: 100%;
+  }
 }
-
 
 @media (max-width: 611px) {
-    .top-sign-up {
-
-        p {
-            font-size: 12px;
-        }
-
-        h5 {
-            font-size: 15px;
-        }
-        h1 {
-            font-size: 40px;
-
-            .full-stop {
-                width: 10px !important;
-                height: 10px !important;
-            }
-        }
+  .top-sign-up {
+    p {
+      font-size: 12px;
     }
 
+    h5 {
+      font-size: 15px;
+    }
+    h1 {
+      font-size: 40px;
+
+      .full-stop {
+        width: 10px !important;
+        height: 10px !important;
+      }
+    }
+  }
 }
 
-
 @media (max-width: 498px) {
-    .signup-whole-cont {
-        padding: 0;
+  .signup-whole-cont {
+    padding: 0;
+  }
+
+  // .full-stop {
+  //     margin-left: 0 !important;
+  // }
+
+  .top-sign-up {
+    h1 {
+      font-size: 30px;
     }
 
-    // .full-stop {
-    //     margin-left: 0 !important;
-    // }
-
-    .top-sign-up {
-        h1 {
-            font-size: 30px;
-        }
-
-        h5 {
-            font-size: 13px;
-        }
+    h5 {
+      font-size: 13px;
     }
-
+  }
 }

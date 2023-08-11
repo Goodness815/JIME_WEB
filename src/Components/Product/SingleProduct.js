@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Sidenav from "../Sidenav/Sidenav";
 import Topnav from "../Topnav/Topnav";
 import "./SingleProduct.scss";
@@ -9,9 +9,9 @@ import StarHalfOutlinedIcon from '@mui/icons-material/StarHalfOutlined';
 
 const SingleProduct = () => {
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <div className="home-whole-cont">
@@ -38,35 +38,29 @@ const SingleProduct = () => {
 
             <div className="rating">
               {" "}
-              <div className="icon-rating"> <StarPurple500OutlinedIcon/> 
-              <StarPurple500OutlinedIcon/>
-              <StarPurple500OutlinedIcon/>
-              <StarPurple500OutlinedIcon/>
-              <StarHalfOutlinedIcon/></div>
-              <p>441 ratings</p>
+              <div className="icon-rating"> <StarPurple500OutlinedIcon />
+                <StarPurple500OutlinedIcon />
+                <StarPurple500OutlinedIcon />
+                <StarPurple500OutlinedIcon />
+                <StarHalfOutlinedIcon />
+              </div>
+              {/* <p>441 ratings</p> */}
+
             </div>
 
-            <div className="colors">
-              <b>Color:</b>
-              <div className="each-colors-cont">
-                <div className="colors-each"></div>
-                <div className="colors-each"></div>
-                <div className="colors-each"></div>
-                <div className="colors-each"></div>
-              </div>
-            </div>
+         
 
             <div className="btn-cont">
-                <Button variant="contained">Buy Now</Button>
-                <Button vriant="outlined">Add to cart</Button>
+              <Button variant="contained" style={{ backgroundColor: '#182030' }}>Buy Now</Button>
+              <Button vriant="outlined" style={{ color: '#182030' }}>Add to cart</Button>
             </div>
           </div>
         </div>
 
-        <hr style={{ color: "black",  width: "100%", marginTop: "60px"}}/>
+        {/* <hr style={{ color: "black",  width: "100%", marginTop: "60px"}}/> */}
 
 
-        <Footer/>
+        <Footer />
       </div>
 
 
@@ -75,3 +69,4 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+

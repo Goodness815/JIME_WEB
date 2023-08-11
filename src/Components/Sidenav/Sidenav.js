@@ -11,12 +11,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import StoreMallDirectoryOutlinedIcon from "@mui/icons-material/StoreMallDirectoryOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // BOOTSTRAP
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
 import "./Sidenav.scss";
 
 const Sidenav = () => {
@@ -51,10 +49,10 @@ const Sidenav = () => {
     // <div>
     <div className="sidenav-cont">
       <div className="burger-cont">
-      <MenuIcon onClick={handleShow} />
+        <MenuIcon onClick={handleShow} />
       </div>
 
-      <div className="off-small-icon">
+      {/* <div className="off-small-icon">
         <Button variant="primary" onClick={handleShow}>
           <HomeOutlinedIcon />
         </Button>
@@ -67,14 +65,11 @@ const Sidenav = () => {
           <StoreMallDirectoryOutlinedIcon />
         </Button>
 
-        <Button variant="primary" onClick={handleShow}>
-          <CategoryOutlinedIcon />
-        </Button>
-      </div>
+      </div> */}
 
       <>
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header closeButton className="text-white">
             <Offcanvas.Title>
               {" "}
               <div className="logo-cont">ST</div>
@@ -85,11 +80,11 @@ const Sidenav = () => {
               sx={{ width: "100%", maxWidth: 360, marginTop: "20px" }}
               component="nav"
               aria-labelledby="nested-list-subheader"
-                // subheader={
-                //   <ListSubheader component="div" id="nested-list-subheader">
-                //     Nested List Items
-                //   </ListSubheader>
-                // }
+            // subheader={
+            //   <ListSubheader component="div" id="nested-list-subheader">
+            //     Nested List Items
+            //   </ListSubheader>
+            // }
             >
               <ListItemButton onClick={(e) => gotoHome()}>
                 <ListItemIcon  >
@@ -109,15 +104,13 @@ const Sidenav = () => {
                 <ListItemIcon>
                   <StoreMallDirectoryOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary="Store" />
+                <ListItemText primary="Orders" />
               </ListItemButton>
-              
+
             </List>
           </Offcanvas.Body>
         </Offcanvas>
       </>
-
-      <div className="logo-cont2">ST</div>
     </div>
 
   );

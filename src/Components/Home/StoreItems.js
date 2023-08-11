@@ -1,5 +1,5 @@
-import React, {  useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.scss";
 
 // MATERIAL UI IMPORTS
@@ -9,10 +9,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Pagination from "../utils/Pagination";
 
 const StoreItems = () => {
-
   let navigate = useNavigate();
+
+  const [currentPageData, setCurrentPageData] = useState([]);
+
+  const itemsPerPage = 12; // Number of items per page
 
   const gotoProduct = () => {
     navigate("/product");
@@ -25,6 +29,26 @@ const StoreItems = () => {
   }, []);
 
   // ITEMS
+
+  useEffect(() => {
+    handlePageChange(1)
+  }, [])
+
+
+  const handlePageChange = (pageNumber) => {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageData = allProduct.slice(startIndex, endIndex);
+    setCurrentPageData(pageData);
+    // Scroll to 160vh from the top of the page when a new page is clicked
+    const targetOffset = 50 * window.innerHeight / 100; // Calculate the offset in pixels
+    if (pageNumber != 1) {
+      window.scrollTo({
+        top: targetOffset,
+        behavior: 'smooth', // Use 'smooth' for smooth scrolling
+      });
+    }
+  };
 
   const allProduct = [
     {
@@ -83,6 +107,182 @@ const StoreItems = () => {
       person: "/static/images/avatar/1.jpg",
       price: "50",
     },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
+    {
+      id: 7,
+      primary: "Summer BBQ",
+      secondary: `Who wants to have a cookout this weekend? I just got some furniture
+        for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+      price: "50",
+    },
   ];
 
   return (
@@ -91,10 +291,10 @@ const StoreItems = () => {
 
       <hr />
       <div className="stores-cont">
-        {allProduct.map((allProduct) => {
+        {currentPageData.map((allProduct, i) => {
           const { primary, secondary, price } = allProduct;
           return (
-            <div className="each-product">
+            <div className="each-product" key={i}>
               <Card onClick={(e) => gotoProduct()} sx={{ maxWidth: 225, cursor: "pointer" }}>
                 <CardMedia
                   component="img"
@@ -130,7 +330,14 @@ const StoreItems = () => {
             </div>
           );
         })}
+
+
       </div>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={allProduct.length}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
