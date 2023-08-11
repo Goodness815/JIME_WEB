@@ -25,7 +25,7 @@ const Cart = () => {
   const [loader, setLoader] = useState(false)
   const [cartProduct, setCartProduct] = useState(localCartProduct ? localCartProduct : [])
   const [cartPrice, setCartPrice] = useState(0)
-  const [cartRealPrice, setCartRealPrice] = useState(0)
+  // const [cartRealPrice, setCartRealPrice] = useState(0)
 
   //Function to fetch cart data
   const fetchCart = async () => {
@@ -44,7 +44,7 @@ const Cart = () => {
         localStorage.setItem('cartProducts', JSON.stringify(res.data.data.Products))
         setCartProduct(res.data.data.Products)
         setCartPrice(res.data.data.TotalPrice_thousand)
-        setCartRealPrice(res.data.data.TotalPrice)
+        // setCartRealPrice(res.data.data.TotalPrice)
         setLoader(false)
       } else {
         // // message.info(res.data.message)
@@ -144,7 +144,7 @@ const Cart = () => {
   // UseEffect to fetch cart when page loads
   useEffect(() => {
     fetchCart()
-  }, [])
+  })
 
   return (
     <div className="home-whole-cont">

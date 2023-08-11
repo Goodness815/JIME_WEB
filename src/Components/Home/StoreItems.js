@@ -32,7 +32,7 @@ const StoreItems = () => {
 
   useEffect(() => {
     handlePageChange(1)
-  }, [])
+  })
 
 
   const handlePageChange = (pageNumber) => {
