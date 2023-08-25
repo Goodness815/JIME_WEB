@@ -41,26 +41,16 @@ const AdminProducts = () => {
     setShow(true);
   };
 
-
-
-
   const handleCloseEdit = (e) => {
     setShow2(false);
     setShow(true);
     // setLoading(false);
   };
-
-
   const handleShowEdit = (e) => {
     // setLoading(true);
     setShow2(true);
     setShow(false);
   };
-
-
-
-
-
   const getAllProducts = async () => {
     if (!currentProducts) {
       setLoading(true)

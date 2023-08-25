@@ -18,6 +18,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setCurrentData(currentData)
   }, [])
 
   const handleAddCart = async (allProduct) => {
@@ -46,7 +47,7 @@ const SingleProduct = () => {
 
         <div className="top-product-cont">
           <div className="product-img">
-            <img src={currentData?.productImage} style={{ objectFit: "contain" }} alt="product image" />
+            <img src={currentData?.productImage} style={{ objectFit: "contain" }} alt="product logo" />
           </div>
 
           <div className="product-details">

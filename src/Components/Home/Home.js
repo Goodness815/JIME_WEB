@@ -10,11 +10,12 @@ import StoreItems from "./StoreItems";
 import Topnav from "../Topnav/Topnav";
 import Sidenav from "../Sidenav/Sidenav";
 import Footer from "../Footer/Footer";
-import "./Home.scss";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import "./Home.scss";
 
 const Home = () => {
+  const userData = JSON.parse(localStorage.getItem('userData'))
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState(JSON.parse(localStorage.getItem('productData')) || []);
@@ -30,7 +31,9 @@ const Home = () => {
   };
 
   const getAllProducts = async () => {
-    setLoading(true)
+    if (!userData) {
+      setLoading(true)
+    }
     try {
       const res = await axios.get(`${process.env.REACT_APP_DEV_URL}/products`)
       setLoading(false)
@@ -103,7 +106,7 @@ const Home = () => {
             </Carousel>
           </div>
 
-          <StoreItems allProduct={products} />
+          <StoreItems loading={loading} allProduct={products} />
           <Footer />
         </div>
       </div>

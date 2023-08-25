@@ -13,7 +13,7 @@ import Pagination from "../utils/Pagination";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-const StoreItems = ({ allProduct }) => {
+const StoreItems = ({ loading, allProduct }) => {
   let navigate = useNavigate();
   const userData = JSON.parse(localStorage.getItem('userData'))
   const [currentPageData, setCurrentPageData] = useState([]);
@@ -77,46 +77,51 @@ const StoreItems = ({ allProduct }) => {
 
       <hr />
       <div className="stores-cont">
-        {currentPageData.map((allProduct, i) => {
-          const { productName, productDesc, productPrice, productImage, id } = allProduct;
-          return (
-            <div className="each-product shadow" key={i}>
-              <Card sx={{ maxWidth: 225, cursor: "pointer" }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  style={{ objectFit: 'contain' }}
-                  image={productImage}
-                  onClick={() => navigate(`/product/${id}`, { state: allProduct })}
-                />
-                <CardContent onClick={() => navigate(`/product/${id}`, { state: allProduct })}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {productName}
-                  </Typography>
+        {loading ?
+          <h3>Fetching Products...</h3>
+          : <>
+            {currentPageData.map((allProduct, i) => {
+              const { productName, productDesc, productPrice, productImage, id } = allProduct;
+              return (
+                <div className="each-product shadow" key={i}>
+                  <Card sx={{ maxWidth: 225, cursor: "pointer" }}>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      style={{ objectFit: 'contain' }}
+                      image={productImage}
+                      onClick={() => navigate(`/product/${id}`, { state: allProduct })}
+                    />
+                    <CardContent onClick={() => navigate(`/product/${id}`, { state: allProduct })}>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {productName}
+                      </Typography>
 
-                  <Typography variant="body2" color="text.secondary">
-                    {productDesc}
-                  </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {productDesc}
+                      </Typography>
 
-                  <Typography gutterBottom variant="h6" component="div">
-                    &#8358; {formatNumberWithCommas(productPrice)}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    onClick={(e) => handleAddCart(allProduct)}
-                    size="small"
-                    variant="light"
-                    style={{ backgroundColor: '#182030' }}
-                    className="w-100 text-white"
-                  >
-                    {cartLoader.includes(id) ? 'Adding..' : "Add to cart"}
-                  </Button>
-                </CardActions>
-              </Card>
-            </div>
-          );
-        })}
+                      <Typography gutterBottom variant="h6" component="div">
+                        &#8358; {formatNumberWithCommas(productPrice)}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        onClick={(e) => handleAddCart(allProduct)}
+                        size="small"
+                        variant="light"
+                        style={{ backgroundColor: '#182030' }}
+                        className="w-100 text-white"
+                      >
+                        {cartLoader.includes(id) ? 'Adding..' : "Add to cart"}
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              );
+            })}
+          </>}
+
 
 
       </div>

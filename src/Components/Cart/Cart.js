@@ -22,8 +22,6 @@ const Cart = () => {
   const [incrementProduct, setIncrementProduct] = useState('')
   const [loader, setLoader] = useState(false)
   const [cartProduct, setCartProduct] = useState([])
-  const [cartPrice, setCartPrice] = useState(0)
-  // const [cartRealPrice, setCartRealPrice] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0);
