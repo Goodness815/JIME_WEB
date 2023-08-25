@@ -80,11 +80,19 @@
   margin-top: 20px;
   margin-left: 3%;
 }
-
+.store-cont-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.store-cont-main h5 {
+  text-align: left;
+  width: 95%;
+}
 .stores-cont {
   width: 95%;
-  margin-left: 3%;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 // CARD (EACH PRODUCT)
@@ -134,11 +142,15 @@
 
 // GRIDING MY STORE ITEM
 .stores-cont {
-  width: 95%;
-  margin-left: 3%;
+  // display: flex;
+  // align-items: center;
+  // flex-basis: 22.5% 22.5% 22.5% 22.5%;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
   display: grid;
+
   grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   grid-row-gap: 30px;
   grid-column-gap: 30px;

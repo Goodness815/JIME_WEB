@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // BOOTSTRAP IMPORTS
@@ -11,9 +11,13 @@ import Topnav from "../Topnav/Topnav";
 import Sidenav from "../Sidenav/Sidenav";
 import Footer from "../Footer/Footer";
 import "./Home.scss";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState(JSON.parse(localStorage.getItem('productData')) || []);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -24,6 +28,27 @@ const Home = () => {
   const gotoSignup = () => {
     navigate("/Signup");
   };
+
+  const getAllProducts = async () => {
+    setLoading(true)
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_DEV_URL}/products`)
+      setLoading(false)
+      if (res.data.success) {
+        localStorage.setItem('productData', JSON.stringify(res.data.data))
+        setProducts(res.data.data)
+      } else {
+        toast.error(res.data.message)
+      }
+    } catch (error) {
+      setLoading(false)
+      toast.error(error.message)
+    }
+  }
+
+  useEffect(() => {
+    getAllProducts()
+  }, [])
 
   return (
     <>
@@ -58,7 +83,7 @@ const Home = () => {
                   </Button>
                 </Carousel.Caption>
               </Carousel.Item>
-              <Carousel.Item>
+              {/* <Carousel.Item>
                 <img
                   className="d-block w-100"
                   src="https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
@@ -74,11 +99,11 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
                   alt="Third slide"
                 />
-              </Carousel.Item>
+              </Carousel.Item> */}
             </Carousel>
           </div>
 
-          <StoreItems />
+          <StoreItems allProduct={products} />
           <Footer />
         </div>
       </div>

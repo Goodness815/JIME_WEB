@@ -1,39 +1,103 @@
-import React, {  useState } from "react";
-import "./AdminTopnav.scss"
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-// import Button from "react-bootstrap/Button";
+import "./AdminTopnav.scss"
 
 
 // BOOTSTRAP
 import Modal from "react-bootstrap/Modal";
 import Button from "@mui/material/Button";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 
 
-const AdminTopnav = () => {
-
+const AdminTopnav = ({ status, setStatus }) => {
+  const adminData = JSON.parse(localStorage.getItem('adminData'))
   const [show, setShow] = useState(false);
+
 
 
   const handleClose = (e) => {
     setShow(false);
-    // setLoading(false);
   };
-
 
   const handleShow = (e) => {
     // setLoading(true);
     setShow(true);
   };
 
+  const [productData, setProductData] = useState({
+    productName: '',
+    productDesc: '',
+    productPrice: '',
+    productImage: '',
+  });
+
+  const [loading, setLoading] = useState(false)
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setProductData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Function that converts image to blob 
+  const handleBlob = (img, resultState) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      // Base64 Data URL 
+      resultState((prv) => ({
+        ...prv,
+        productImage: reader.result
+      }))
+
+    });
+    reader.readAsDataURL(img);
+  }
+
+  // process.env.REACT_APP_DEV_URL
+  const createProduct = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products`, productData, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          Authorization: `Bearer ${adminData?.token || ''}`
+        },
+      })
+      setLoading(false)
+      if (res.data.success) {
+        setStatus(status + 1)
+        setProductData({
+          productName: '',
+          productDesc: '',
+          productPrice: '',
+          productImage: '',
+        })
+        handleClose()
+        toast.success('Product created Successfully')
+      } else {
+        toast.error(res.data.message)
+      }
+    } catch (error) {
+      setLoading(false)
+      toast.error(error.message)
+    }
+  }
+
 
   return (
     <div>
-      <Navbar  expand="lg" bg="dark" variant="dark">
+      <Navbar expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Navbar.Brand href="#">
             <div className="logo-cont-a">ST</div>
@@ -46,7 +110,6 @@ const AdminTopnav = () => {
               navbarScroll
             >
               <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Products</Nav.Link>
               <Nav.Link onClick={handleShow} href="#action2">Add Products</Nav.Link>
 
             </Nav>
@@ -66,71 +129,33 @@ const AdminTopnav = () => {
 
       {/* ADD NEW PRODUCTS FOR ADMIN */}
       <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add a product</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {/* <h1>Rocket jacket product</h1>
-            <p> <b>Description: </b> <br/>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis repellat ipsa eum officiis facilis quam sequi, doloribus vero quisquam veritatis numquam placeat totam. Modi voluptatem quidem cumque rem cupiditate consequuntur?</p>
-            <h5>&#8358;20,000</h5>
+        <Modal.Header closeButton>
+          <Modal.Title>Add a product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={createProduct} className="add-products">
+            <b>Product Name</b>
+            <br />
+            <input type="text" name='productName' onChange={handleInputChange} required />
+            <br />
+            <b>Product Description</b>
+            <br />
+            <input type="text" name='productDesc' onChange={handleInputChange} required />
+            <br />
+            <b>Product Price</b>
+            <br />
+            <input type="text" name='productPrice' onChange={handleInputChange} required />
+            <br />
+            <b>Product Image</b>
+            <br />
+            <input type="file" onChange={(e) => handleBlob(e.target.files[0], setProductData)} required />
+            <button type="submit" style={{ backgroundColor: 'black', color: 'white' }} >
+              {loading ? 'Saving...' : "Save"}
+            </button>
+          </form>
 
-            <hr />
-
-            <h4>Add-ons</h4>
-            <form action="">
-              <label htmlFor=""> Color</label>
-              <br />
-              <input type="color" />  
-
-              <br />
-              <label htmlFor="">Size</label>
-              <br />
-              <select name="" id="">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-                <option value="">6</option>
-                <option value="">7</option>
-                <option value="">8</option>
-                <option value="">9</option>
-                <option value="">10</option>  
-              </select>
-            </form> */}
-
-            <form action="" className="add-products">
-              <b>Product Name</b>
-              <br/>
-              <input type="text" />
-              <br/>
-              <b>Product Description</b>          
-              <br/>
-              <input type="text" />
-              <br/>
-              <b>Product Price</b>
-              <br/>
-              <input type="text" />
-              <br/>
-              <h5>Add-ons</h5>
-              <b>Product Size</b>
-              <br/>
-              <input type="text" />
-              <br/>
-              <b>Product Color</b>
-              <br/>
-              <input type="text" />
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Save
-            </Button>
-            {/* <Button variant="primary" onClick={handleShow}>
-              E
-            </Button> */}
-          </Modal.Footer>
-        </Modal>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

@@ -12,51 +12,51 @@ import { BsPlusLg } from 'react-icons/bs'
 import { Spinner } from 'react-bootstrap'
 // import { message } from 'antd'
 import axios from 'axios'
+import { toast } from "react-hot-toast";
 
 const Cart = () => {
 
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const localCartProduct = JSON.parse(localStorage.getItem('cartProducts'))
-  const app_token = "vjh35vj3hv5jhv56jh5v6jhv56jh3v6j3hv6jhvj3hvuu3yg5uygu3y5guyg5uyuhb5uh"
   const navigate = useNavigate()
-
   const [deleteProduct, setDeleteProduct] = useState('')
   const [incrementProduct, setIncrementProduct] = useState('')
   const [loader, setLoader] = useState(false)
-  const [cartProduct, setCartProduct] = useState(localCartProduct ? localCartProduct : [])
+  const [cartProduct, setCartProduct] = useState([])
   const [cartPrice, setCartPrice] = useState(0)
   // const [cartRealPrice, setCartRealPrice] = useState(0)
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Function to calculate the total product price from an array of products
+  const calculateTotalPrice = (productArray) => {
+    let totalPrice = 0;
+    for (const product of productArray) {
+      totalPrice += product.productPrice;
+    }
+    return totalPrice;
+  };
+
+  const formatNumberWithCommas = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   //Function to fetch cart data
   const fetchCart = async () => {
     setLoader(true)
     try {
-
-
-      const res = await axios.post("https://bac.solarcredit.io/v0.1/api/fetchCart", {
-        apptoken: app_token,
-        usertoken: userData.usertoken
-      }, {
-        headers: { Authorization: `Bearer 6455ef91d108f` }
-      })
-      setIncrementProduct('')
+      const res = await axios.get(`${process.env.REACT_APP_DEV_URL}/products/cart/${userData.id}`)
+      setLoader(false)
       if (res.data.success) {
-        localStorage.setItem('cartProducts', JSON.stringify(res.data.data.Products))
-        setCartProduct(res.data.data.Products)
-        setCartPrice(res.data.data.TotalPrice_thousand)
-        // setCartRealPrice(res.data.data.TotalPrice)
-        setLoader(false)
+        setCartProduct(res.data.data)
       } else {
-        // // message.info(res.data.message)
+        toast.error(res.data.message)
         setCartProduct([])
-        localStorage.setItem('cartProducts', JSON.stringify([]))
-        setLoader(false)
       }
 
     } catch (error) {
-      // // message.error(error.message)
+      toast.error(error.message)
       setLoader(false)
-      setIncrementProduct('')
     }
   }
 
@@ -64,13 +64,7 @@ const Cart = () => {
   const handleCartProductDelete = async (id) => {
     setDeleteProduct(id)
     try {
-      const res = await axios.post("https://bac.solarcredit.io/v0.1/api/removeCart", {
-        apptoken: app_token,
-        usertoken: userData.usertoken,
-        productToken: id
-      }, {
-        headers: { Authorization: `Bearer 6455ef91d108f` }
-      })
+      const res = await axios.post("https://bac.solarcredit.io/v0.1/api/removeCart")
 
       if (res.data.success) {
         fetchCart()
@@ -89,14 +83,7 @@ const Cart = () => {
     if (qnt < max) {
       setIncrementProduct(id)
       try {
-        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/increaseQuantity", {
-          apptoken: app_token,
-          usertoken: userData.usertoken,
-          productToken: id,
-          productQuantity: qnt
-        }, {
-          headers: { Authorization: `Bearer 6455ef91d108f` }
-        })
+        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/increaseQuantity")
         if (res.data.success) {
           fetchCart()
         } else {
@@ -119,14 +106,7 @@ const Cart = () => {
     } else {
       setIncrementProduct(id)
       try {
-        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/decreaseQuantity", {
-          apptoken: app_token,
-          usertoken: userData.usertoken,
-          productToken: id,
-          productQuantity: qnt
-        }, {
-          headers: { Authorization: `Bearer 6455ef91d108f` }
-        })
+        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/decreaseQuantity")
         if (res.data.success) {
           fetchCart()
         } else {
@@ -144,7 +124,7 @@ const Cart = () => {
   // UseEffect to fetch cart when page loads
   useEffect(() => {
     fetchCart()
-  })
+  }, [])
 
   return (
     <div className="home-whole-cont">
@@ -168,15 +148,15 @@ const Cart = () => {
               </div>
 
               {cartProduct?.map((cartBox) => {
-                return <div key={cartBox.productToken} className="cart-box-item d-flex  justify-content-between">
+                return <div key={cartBox.id} className="cart-box-item d-flex  justify-content-between">
                   <div className="cart-box-item-left d-flex flex-column align-items-start justify-content-between">
                     <div className="cart-box-left-top d-flex align-items-center justify-content-start">
                       <div className="cartdetailsleftimg d-flex align-items-center justify-content-center">
                         <img src={cartBox.productImage} alt="" />
                       </div>
                       <div className="cartdetailslefttext">
-                        <h1>{cartBox.productname}</h1>
-                        <span className="cartdetailsprice">Quantity: {cartBox.productQuantity}</span>
+                        <h1>{cartBox.productName}</h1>
+                        <span className="cartdetailsprice">Quantity: 1</span>
                       </div>
                     </div>
                     <div className="cart-box-left-botom d-flex align-items-center" onClick={() => handleCartProductDelete(cartBox.productToken)}>
@@ -200,7 +180,7 @@ const Cart = () => {
 
                   <div className="cart-box-item-right d-flex flex-column align-items-end justify-content-between">
                     <div className="cart-box-right-top d-flex align-items-center">
-                      <TbCurrencyNaira /> {cartBox.productPrice_thousand}
+                      <TbCurrencyNaira /> {formatNumberWithCommas(cartBox.productPrice)}
                     </div>
                     <div className="cart-box-right-box d-flex align-items-center">
                       <button onClick={() => handleDecreaseQuantity(cartBox.productToken, cartBox.productQuantity, cartBox.maximumQuantity)}><AiOutlineMinus /></button>
@@ -233,13 +213,11 @@ const Cart = () => {
             <div className="cartdetailsright shadow">
               <span className='cartdetailsrightspan'>CART SUMMARY</span>
               <div className="cartdetailsamount">
-                <span>AMOUNT:</span> {cartPrice}
+                <span>AMOUNT:</span> {formatNumberWithCommas(calculateTotalPrice(cartProduct))}
               </div>
-              {/* <div className="cartdetailsbuttondiv">
-                <PaystackHookExample text={`PAY ONCE (#${cartPrice})`} amount={cartRealPrice} email={userData.mail} type='cart' data={cartProduct} />
-                <h5>OR</h5>
-                <button onClick={() => navigate('/user/payinstallmentally', { state: { product: cartProduct, amount: cartRealPrice } })}>PAY INSTALLMENTALLY</button>
-              </div> */}
+              <div className="cartdetailsbuttondiv">
+                <button>PAY NOW</button>
+              </div>
             </div>
           </div>
         </div>

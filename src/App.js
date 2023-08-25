@@ -10,12 +10,17 @@ import Cart from "./Components/Cart/Cart";
 import AdminLogin from "./Components/Admin/AdminLogin/AdminLogin";
 import AdminProducts from "./Components/Admin/AdminProducts/AdminProducts";
 import Stores from "./Components/Stores/Stores";
+import { Toaster } from 'react-hot-toast';
 import "./App.css";
 
 
 function App() {
+
+
+
   return (
     <div>
+      <Toaster />
       <Router>
         <Routes>
           <Route
@@ -27,12 +32,12 @@ function App() {
             }
             exact
           />
-                    <Route path="/productsadmin" element={<AdminProducts />} exact />
-                    <Route path="/store" element={<Stores />} exact />
-
-          <Route path="/product" element={<SingleProduct />} exact />
-          <Route path="/cart" element={<Cart />} exact />
           <Route path="/admin" element={<AdminLogin />} exact />
+          <Route path="/admin/dashboard" element={<AdminProducts />} exact />
+          <Route path="/store" element={<Stores />} exact />
+
+          <Route path="/product/:id" element={<SingleProduct />} exact />
+          <Route path="/cart" element={<Cart />} exact />
 
 
           <Route path="/Login" element={<Login />} exact />

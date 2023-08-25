@@ -1,18 +1,21 @@
 import React from "react";
 import logo from '../../assets/logo.png'
 import SearchIcon from "@mui/icons-material/Search";
-// import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from "react-router-dom";
 import "./Topnav.scss";
 
 
 
 const Topnav = () => {
+
+  const userData = JSON.parse(localStorage.getItem('userData'))
+
   return (
     <div className="topnav-cont align-items-center">
 
       <div className="topnav-cont-top d-flex align-items-center justify-content-between w-100">
-        <img src={logo} alt="" className="logo"  style={{ marginLeft: '30px' }} />
+        <img src={logo} alt="" className="logo" style={{ marginLeft: '30px' }} />
 
         <div className="search-cont">
           <div className="search-icon">
@@ -22,14 +25,22 @@ const Topnav = () => {
         </div>
 
         <div className="account-bar">
-          {/* 
-        <h6>Adenuga</h6>
-        <AccountCircleOutlinedIcon/> */}
 
-          {/* IF USER IS NOT LOGGED IN SO CONDITIONAL STATEMENT COMES IN HERE */}
+          {!userData ?
+            <>
+              <Link to="/login" className="log-btn-top">Login</Link>
+              <Link to="/signup" className="sign-btn-top">Signup</Link>
+            </>
 
-          <Link to="/login" className="log-btn-top">Login</Link>
-          <Link to="/signup" className="sign-btn-top">Signup</Link>
+            :
+
+            <>
+
+              <h6>{userData.lname}</h6>
+              <AccountCircleOutlinedIcon />
+            </>
+
+          }
         </div>
       </div>
       <div className="topnav-cont-bottom d-flex align-items-center justify-content-center w-100">
@@ -43,7 +54,7 @@ const Topnav = () => {
 
 
 
-    </div>
+    </div >
   );
 };
 

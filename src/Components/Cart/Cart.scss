@@ -37,7 +37,8 @@
 }
 
 .cart-header a {
-  color: #fec52a;
+  color: #ff8800;
+  font-weight: 700;
   font-size: 14px;
   margin-right: 10px;
 }
@@ -101,7 +102,7 @@
 }
 
 .cart-box-right-box button:first-of-type {
-  background-color: rgba(0, 0, 0, 0.507);
+  background-color: #182030;
   color: white;
 }
 
@@ -110,7 +111,7 @@
   border-radius: 7px;
   font-size: 12px;
   border: none;
-  background-color: black;
+  background-color: #182030;
   color: white;
 }
 
@@ -183,10 +184,17 @@
   font-weight: 600;
   color: black;
 }
+.cartdetailsbuttondiv button:hover {
+  background: black;
+  transition: 0.5s ease all;
+}
 
 .cartdetailsbuttondiv button:first-of-type {
-  background: black;
+  background: #182030;
   color: white;
+}
+.cartdetailsbuttondiv button:first-of-type:hover {
+  background: black;
 }
 
 @media screen and (max-width: 755px) {
