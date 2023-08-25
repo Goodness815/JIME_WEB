@@ -6,12 +6,15 @@ import Button from "@mui/material/Button";
 import Footer from "../Footer/Footer";
 import StarPurple500OutlinedIcon from '@mui/icons-material/StarPurple500Outlined';
 import StarHalfOutlinedIcon from '@mui/icons-material/StarHalfOutlined';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { usePaystackPayment } from "react-paystack";
+import { PaystackButton } from "../utils/PayStack";
 
 const SingleProduct = () => {
   const initData = useLocation().state
+  const navigate = useNavigate()
   const userData = JSON.parse(localStorage.getItem('userData'))
   const [currentData, setCurrentData] = useState(initData || {})
   const [loading, setLoading] = useState(false)
@@ -39,6 +42,37 @@ const SingleProduct = () => {
 
   }
 
+  const formatNumberWithCommas = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+
+  const onSuccess = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    if (reference.status === 'success') {
+      return console.log(reference)
+    } else {
+      return console.log(reference)
+    }
+  };
+
+
+  // you can call this function anything
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    toast.error('Payment Cancelled')
+  }
+
+
+  const initializePayment = usePaystackPayment({
+    reference: (new Date()).getTime().toString(),
+    email: userData.email,
+    amount: currentData?.productPrice * 100,
+    publicKey: process.env.REACT_APP_PAYSTACK_KEY,
+  });
+
+
+
   return (
     <div className="home-whole-cont">
       <Sidenav />
@@ -47,7 +81,7 @@ const SingleProduct = () => {
 
         <div className="top-product-cont">
           <div className="product-img">
-            <img src={currentData?.productImage} style={{ objectFit: "contain" }} alt="product logo" />
+            <img src={currentData?.productImage} style={{ objectFit: "contain", padding: "30px" }} alt="product logo" />
           </div>
 
           <div className="product-details">
@@ -58,7 +92,7 @@ const SingleProduct = () => {
               <b>Description:</b> <br /> {currentData?.productDesc}
             </p>
 
-            <h6 className="product-price">N{currentData?.productPrice}</h6>
+            <h6 className="product-price">N{formatNumberWithCommas(currentData?.productPrice)}</h6>
 
             <div className="rating">
               {" "}
@@ -75,8 +109,8 @@ const SingleProduct = () => {
 
 
             <div className="btn-cont">
-              <Button variant="contained" style={{ backgroundColor: '#182030' }}>Buy Now</Button>
-              <Button vriant="outlined" style={{ color: '#182030' }} onClick={() => handleAddCart(currentData)}>{loading ? "Adding.." : "Add to cart"}</Button>
+              <PaystackButton amount={currentData?.productPrice} email={userData.email} buttonBase={true} />
+              <Button vriant="outlined" style={{ color: '#182030' }} onClick={userData ? () => handleAddCart(currentData) : () => navigate('/login')}>{loading ? "Adding.." : "Add to cart"}</Button>
             </div>
           </div>
         </div>

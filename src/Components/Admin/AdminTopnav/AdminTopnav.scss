@@ -1,48 +1,54 @@
 $text-color: #1a429c;
-$sec-text-color:rgb(170, 170, 170);
+$sec-text-color: rgb(170, 170, 170);
 $primary-color: #1976d2;
 
-
 .logo-cont-a {
-    // margin-right: 80px;
-    color: $text-color;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: "alata"; 
-    background-color: rgba(255, 255, 255, 0.747);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-
+  // margin-right: 80px;
+  color: $text-color;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "alata";
+  background-color: rgba(255, 255, 255, 0.747);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 
 .navbar-nav-scroll {
-    overflow: visible !important;
+  overflow: visible !important;
 }
 
-
-
 .add-products {
-    font-family:"alata";
+  font-family: "alata";
+  width: 100%;
+
+  input {
+    background-color: white;
+    border: none;
+    border: 1px solid black;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 8px;
+    height: 40px;
     width: 100%;
+  }
 
-    input {
-        background-color:#1a419c6b;
-        border: none;
-        color: white;
-        padding: 10px 5px;
-        border-radius: 2px;
-        width: 100%;
-    }
+  button {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+  }
 
-    :focus {
-        outline: none;
-    }
+  :focus {
+    outline: none;
+    border: 2px solid black;
+  }
 }
 
 @media (max-width: 991px) {
-    .my-2 {
-        // margin-top: 0.5rem!important;
-        margin-bottom: 2.5rem!important;
-    }
+  .my-2 {
+    // margin-top: 0.5rem!important;
+    margin-bottom: 2.5rem !important;
+  }
 }

@@ -13,7 +13,7 @@ import Pagination from "../utils/Pagination";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-const StoreItems = ({ loading, allProduct }) => {
+const StoreItems = ({ title, loading, allProduct }) => {
   let navigate = useNavigate();
   const userData = JSON.parse(localStorage.getItem('userData'))
   const [currentPageData, setCurrentPageData] = useState([]);
@@ -70,15 +70,30 @@ const StoreItems = ({ loading, allProduct }) => {
     }
 
   }
+  if (loading) {
+    return <div className="store-cont-main">
+      <div className="stores-cont">
+        <h5>Fetching products..</h5>
+      </div>
 
+    </div>
+  }
+  if (currentPageData.length === 0) {
+    return <div className="store-cont-main">
+      <div className="stores-cont">
+        <h5>No Result</h5>
+      </div>
+
+    </div>
+  }
   return (
     <div className="store-cont-main">
-      <h5 className="trending">Top Products</h5>
+      <h5 className="trending">{title}</h5>
 
       <hr />
       <div className="stores-cont">
         {loading ?
-          <h3>Fetching Products...</h3>
+          <h5>Fetching Products...</h5>
           : <>
             {currentPageData.map((allProduct, i) => {
               const { productName, productDesc, productPrice, productImage, id } = allProduct;
@@ -87,8 +102,9 @@ const StoreItems = ({ loading, allProduct }) => {
                   <Card sx={{ maxWidth: 225, cursor: "pointer" }}>
                     <CardMedia
                       component="img"
-                      height="140"
-                      style={{ objectFit: 'contain' }}
+
+                      height="150"
+                      style={{ objectFit: 'contain', padding: '10px' }}
                       image={productImage}
                       onClick={() => navigate(`/product/${id}`, { state: allProduct })}
                     />

@@ -15,7 +15,7 @@ import axios from "axios";
 
 
 
-const AdminTopnav = ({ status, setStatus }) => {
+const AdminTopnav = ({ status, setStatus, search, setSearch }) => {
   const adminData = JSON.parse(localStorage.getItem('adminData'))
   const [show, setShow] = useState(false);
 
@@ -119,6 +119,8 @@ const AdminTopnav = ({ status, setStatus }) => {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <Button variant="outlined">Search</Button>
             </Form>

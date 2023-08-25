@@ -86,6 +86,7 @@ const Signup = () => {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 required
+                style={{ borderColor: "white" }}
 
               />
               <TextField

@@ -12,6 +12,9 @@ import ListItemText from "@mui/material/ListItemText";
 import StoreMallDirectoryOutlinedIcon from "@mui/icons-material/StoreMallDirectoryOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 // BOOTSTRAP
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -40,10 +43,14 @@ const Sidenav = () => {
   };
 
 
-  const gotoStore = () => {
-    navigate("/store");
+  const gotoOrders = () => {
+    navigate("/orders");
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('userData')
+    navigate('/login')
+  }
 
   return (
     // <div>
@@ -52,59 +59,46 @@ const Sidenav = () => {
         <MenuIcon onClick={handleShow} />
       </div>
 
-      {/* <div className="off-small-icon">
-        <Button variant="primary" onClick={handleShow}>
-          <HomeOutlinedIcon />
-        </Button>
-
-        <Button variant="primary" onClick={handleShow}>
-          <ShoppingCartOutlinedIcon />
-        </Button>
-
-        <Button variant="primary" onClick={handleShow}>
-          <StoreMallDirectoryOutlinedIcon />
-        </Button>
-
-      </div> */}
-
       <>
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton className="text-white">
-            <Offcanvas.Title>
-              {" "}
-              <div className="logo-cont">ST</div>
+          <Offcanvas.Header  className="text-white" >
+            <Offcanvas.Title className='w-100 mb-4 d-flex align-items-center justify-content-between'>
+              <div className="logo-cont h-100">ST</div>
+              <div className="closeicon" onClick={handleClose} sx={{ cursor: 'pointer' }}><CloseIcon /></div>
             </Offcanvas.Title>
-          </Offcanvas.Header>
+          </Offcanvas.Header >
           <Offcanvas.Body>
             <List
+              style={{ color: "white" }}
               sx={{ width: "100%", maxWidth: 360, marginTop: "20px" }}
               component="nav"
               aria-labelledby="nested-list-subheader"
-            // subheader={
-            //   <ListSubheader component="div" id="nested-list-subheader">
-            //     Nested List Items
-            //   </ListSubheader>
-            // }
             >
-              <ListItemButton onClick={(e) => gotoHome()}>
-                <ListItemIcon  >
-                  <HomeOutlinedIcon />
+              <ListItemButton style={{ color: "white" }} onClick={(e) => gotoHome()}>
+                <ListItemIcon style={{ color: "white" }}  >
+                  <HomeOutlinedIcon style={{ color: "white" }} />
                 </ListItemIcon>
-                <ListItemText primary="Home" />
+                <ListItemText style={{ color: "white" }} primary="Home" />
               </ListItemButton>
 
-              <ListItemButton onClick={(e) => gotoCart()}>
-                <ListItemIcon  >
-                  <ShoppingCartOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Cart" />
+              <ListItemButton style={{ color: "white" }} onClick={(e) => gotoCart()}>
+                <ListItemIcon style={{ color: "white" }}  >
+                  <ShoppingCartOutlinedIcon style={{ color: "white" }} />
+                </ListItemIcon >
+                <ListItemText style={{ color: "white" }} primary="Cart" />
               </ListItemButton>
 
-              <ListItemButton onClick={(e) => gotoStore()} >
+              <ListItemButton onClick={(e) => gotoOrders()} >
                 <ListItemIcon>
                   <StoreMallDirectoryOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Orders" />
+              </ListItemButton>
+              <ListItemButton onClick={(e) => handleLogout()} >
+                <ListItemIcon>
+                  <ExitToAppOutlinedIcon fontSize="large" />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
               </ListItemButton>
 
             </List>

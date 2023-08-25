@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media (max-width: 840px) {
+  .caro-cont {
+    margin-top: 120px;
+  }
+
+  .cartdetailsmain {
+    margin-top: 140px;
+  }
+}

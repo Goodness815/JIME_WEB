@@ -106,7 +106,7 @@ const Home = () => {
             </Carousel>
           </div>
 
-          <StoreItems loading={loading} allProduct={products} />
+          <StoreItems title='Top Products' loading={loading} allProduct={products} />
           <Footer />
         </div>
       </div>

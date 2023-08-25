@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
-import "./Cart.scss";
 import Sidenav from "../Sidenav/Sidenav";
 import Topnav from "../Topnav/Topnav";
 
-import { AiOutlineDelete, AiOutlineMinus } from 'react-icons/ai'
+import { AiOutlineDelete } from 'react-icons/ai'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { TbCurrencyNaira } from 'react-icons/tb'
-import { BsPlusLg } from 'react-icons/bs'
 import { Spinner } from 'react-bootstrap'
 // import { message } from 'antd'
 import axios from 'axios'
 import { toast } from "react-hot-toast";
+import { PaystackButton } from "../utils/PayStack";
+import "./Cart.scss";
 
 const Cart = () => {
 
   const userData = JSON.parse(localStorage.getItem('userData'))
   const navigate = useNavigate()
   const [deleteProduct, setDeleteProduct] = useState('')
-  const [incrementProduct, setIncrementProduct] = useState('')
   const [loader, setLoader] = useState(false)
   const [cartProduct, setCartProduct] = useState([])
 
@@ -62,67 +61,31 @@ const Cart = () => {
   const handleCartProductDelete = async (id) => {
     setDeleteProduct(id)
     try {
-      const res = await axios.post("https://bac.solarcredit.io/v0.1/api/removeCart")
-
+      const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products/cart/delete`, { id: userData.id, productId: id })
+      setDeleteProduct('')
       if (res.data.success) {
+        toast.success('Deleted sucessfully!')
         fetchCart()
       } else {
-        // // message.info(res.data.message)
-        setDeleteProduct('')
+        toast.error(res.data.message)
       }
     } catch (error) {
       setDeleteProduct('')
-      // // message.error(error.message)
+      toast.error(error.message)
     }
   }
 
-  // Function to handle Quantity Increase
-  const handleIncreaseQuantity = async (id, qnt, max) => {
-    if (qnt < max) {
-      setIncrementProduct(id)
-      try {
-        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/increaseQuantity")
-        if (res.data.success) {
-          fetchCart()
-        } else {
-          setIncrementProduct('')
-          // // message.info(res.data.message)
-        }
-      } catch (error) {
-        setIncrementProduct('')
-        // // message.error(error.message)
-      }
-    } else {
-      // message.info('reach max quantity for product')
-    }
-  }
-
-  //Function to handle quantity decrease
-  const handleDecreaseQuantity = async (id, qnt, max) => {
-    if (qnt === 1) {
-      // message.info('reach min quantity for product')
-    } else {
-      setIncrementProduct(id)
-      try {
-        const res = await axios.post("https://bac.solarcredit.io/v0.1/api/decreaseQuantity")
-        if (res.data.success) {
-          fetchCart()
-        } else {
-          setIncrementProduct('')
-          // // message.info(res.data.message)
-        }
-      } catch (error) {
-        setIncrementProduct('')
-        // // message.error(error.message)
-      }
-
-    }
-  }
 
   // UseEffect to fetch cart when page loads
   useEffect(() => {
-    fetchCart()
+    if (userData) {
+      fetchCart()
+    }
   }, [])
+
+  if (!userData) {
+    return <Navigate to='/login' />
+  }
 
   return (
     <div className="home-whole-cont">
@@ -138,7 +101,7 @@ const Cart = () => {
               <div className="cart-header d-flex align-items-center justify-content-between">
                 <h6>Cart {`(${cartProduct ? cartProduct.length : 0})`}</h6>
                 <div>
-                  <Link to="/user/orders">View Orders</Link>
+                  <Link to="/orders">View Orders</Link>
                   {loader && <Spinner animation="border" role="status" size='sm' className='store-spinner'>
                     <span className="visually-hidden">Loading...</span>
                   </Spinner>}
@@ -157,8 +120,8 @@ const Cart = () => {
                         <span className="cartdetailsprice">Quantity: 1</span>
                       </div>
                     </div>
-                    <div className="cart-box-left-botom d-flex align-items-center" onClick={() => handleCartProductDelete(cartBox.productToken)}>
-                      {deleteProduct === cartBox.productToken ? (
+                    <div className="cart-box-left-botom d-flex align-items-center" onClick={() => handleCartProductDelete(cartBox.id)}>
+                      {deleteProduct === cartBox.id ? (
                         <>
                           <span className=" d-flex align-items-center justify-content-center">
                             <Spinner animation="border" role="status" size='sm' className='store-spinner'>
@@ -180,7 +143,7 @@ const Cart = () => {
                     <div className="cart-box-right-top d-flex align-items-center">
                       <TbCurrencyNaira /> {formatNumberWithCommas(cartBox.productPrice)}
                     </div>
-                    <div className="cart-box-right-box d-flex align-items-center">
+                    {/* <div className="cart-box-right-box d-flex align-items-center">
                       <button onClick={() => handleDecreaseQuantity(cartBox.productToken, cartBox.productQuantity, cartBox.maximumQuantity)}><AiOutlineMinus /></button>
                       <span>
 
@@ -199,7 +162,7 @@ const Cart = () => {
                       </span>
                       <button onClick={() => handleIncreaseQuantity(cartBox.productToken, cartBox.productQuantity, cartBox.maximumQuantity
                       )}><BsPlusLg /></button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               })}
@@ -214,7 +177,8 @@ const Cart = () => {
                 <span>AMOUNT:</span> {formatNumberWithCommas(calculateTotalPrice(cartProduct))}
               </div>
               <div className="cartdetailsbuttondiv">
-                <button>PAY NOW</button>
+                <PaystackButton amount={calculateTotalPrice(cartProduct)} email={userData.email} />
+                {/* <button onClick={() => initializePayment(onSuccess, onClose)}>PAY NOW</button> */}
               </div>
             </div>
           </div>
