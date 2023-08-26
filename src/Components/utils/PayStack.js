@@ -33,8 +33,7 @@ export const PaystackButton = ({ product, amount, email, buttonBase }) => {
         localStorage.setItem('updatedUserData', JSON.stringify(updatedUserData))
         setLoader(true)
         try {
-            const res = await axios.post(`http://localhost:5000/api/v1/products/createorder`, { paymentData: payload, product, user: { ...userData, ...updatedUserData } })
-            // const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products/createorder`, { paymentData: payload, product, user: userData })
+            const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products/createorder`, { paymentData: payload, product, user: { ...userData, ...updatedUserData } })
             setLoader(false)
             if (res.data.success) {
                 toast.success('Order placed sucessfully! kindly check your mail for more updates.')

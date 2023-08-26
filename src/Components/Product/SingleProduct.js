@@ -15,12 +15,13 @@ const SingleProduct = () => {
   const initData = useLocation().state
   const navigate = useNavigate()
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const [currentData, setCurrentData] = useState(initData || {})
+  const currentData = initData
+  // const [currentData, setCurrentData] = useState(initData || {})
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setCurrentData(currentData)
+    // setCurrentData(currentData)
   }, [])
 
   const handleAddCart = async (allProduct) => {

@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import banner from '../../assets/banner.jpg'
-// BOOTSTRAP IMPORTS
-import Carousel from "react-bootstrap/Carousel";
 
-// MATERIAL UI IMPORTS
-import Button from "@mui/material/Button";
 import StoreItems from "./StoreItems";
 import Topnav from "../Topnav/Topnav";
 import Sidenav from "../Sidenav/Sidenav";
@@ -16,19 +10,9 @@ import "./Home.scss";
 
 const Home = () => {
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState(JSON.parse(localStorage.getItem('productData')) || []);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
-  let navigate = useNavigate();
-
-  const gotoSignup = () => {
-    navigate("/Signup");
-  };
 
   const getAllProducts = async () => {
     if (!userData) {
