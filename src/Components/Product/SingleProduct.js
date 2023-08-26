@@ -9,7 +9,6 @@ import StarHalfOutlinedIcon from '@mui/icons-material/StarHalfOutlined';
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { usePaystackPayment } from "react-paystack";
 import { PaystackButton } from "../utils/PayStack";
 
 const SingleProduct = () => {
@@ -45,32 +44,6 @@ const SingleProduct = () => {
   const formatNumberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
-
-  const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    if (reference.status === 'success') {
-      return console.log(reference)
-    } else {
-      return console.log(reference)
-    }
-  };
-
-
-  // you can call this function anything
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    toast.error('Payment Cancelled')
-  }
-
-
-  const initializePayment = usePaystackPayment({
-    reference: (new Date()).getTime().toString(),
-    email: userData.email,
-    amount: currentData?.productPrice * 100,
-    publicKey: process.env.REACT_APP_PAYSTACK_KEY,
-  });
-
 
 
   return (
@@ -109,7 +82,7 @@ const SingleProduct = () => {
 
 
             <div className="btn-cont">
-              <PaystackButton amount={currentData?.productPrice} email={userData.email} buttonBase={true} />
+              <PaystackButton product={[currentData]} amount={currentData?.productPrice} email={userData?.email} buttonBase={true} />
               <Button vriant="outlined" style={{ color: '#182030' }} onClick={userData ? () => handleAddCart(currentData) : () => navigate('/login')}>{loading ? "Adding.." : "Add to cart"}</Button>
             </div>
           </div>

@@ -1,58 +1,56 @@
 .admin-w-c {
-    background-color:#182030 ;
-    // border: 2px solid green !important;
+  background-color: #182030;
+  // border: 2px solid green !important;
 }
 
-
-
 .css-1t6e9jv-MuiCardActions-root {
-    display: flex !important;
-    justify-content: space-between !important;
-    svg {
-        color: #1976d2!important;
-        cursor: pointer;
-    }
+  display: flex !important;
+  justify-content: space-between !important;
+  svg {
+    color: #1976d2 !important;
+    cursor: pointer;
+  }
 }
 
 // text-overflow: ellipsis;
 // overflow: hidden;
 // white-space: nowrap;
 
-.css-46bh2p-MuiCardContent-root {
-    text-overflow: ellipsis !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
+.adminCard {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
 }
 
+.adminProductImage {
+  object-fit: contain !important;
+}
 // GRIDING MY PRODUCT ITEM
 .admin-p-c {
-    width: 95%;
-    margin-left: 3%;
-    display: grid;
-    grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
-    justify-content: center;
-    align-items: center;
-    grid-row-gap: 30px;
-    grid-column-gap: 30px ;
-    margin-top: 30px;
+  width: 95%;
+  margin-left: 3%;
+  display: grid;
+  grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
+  justify-content: center;
+  align-items: center;
+  grid-row-gap: 30px;
+  grid-column-gap: 30px;
+  margin-top: 30px;
 }
-
 
 @media (max-width: 1064px) {
-.admin-p-c {
+  .admin-p-c {
     display: grid;
     grid-template-columns: 32% 32% 32%;
+  }
 }
-}
-
 
 @media (max-width: 858px) {
-.admin-p-c {
+  .admin-p-c {
     display: grid;
     grid-template-columns: 45% 45%;
+  }
 }
-}
-
 
 // @media (max-width: 908px) {
 // .carousel-caption {
@@ -65,7 +63,6 @@
 //     }
 // }
 // }
-
 
 // @media (max-width: 662px) {
 // .carousel-caption {

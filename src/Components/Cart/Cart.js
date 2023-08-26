@@ -143,26 +143,6 @@ const Cart = () => {
                     <div className="cart-box-right-top d-flex align-items-center">
                       <TbCurrencyNaira /> {formatNumberWithCommas(cartBox.productPrice)}
                     </div>
-                    {/* <div className="cart-box-right-box d-flex align-items-center">
-                      <button onClick={() => handleDecreaseQuantity(cartBox.productToken, cartBox.productQuantity, cartBox.maximumQuantity)}><AiOutlineMinus /></button>
-                      <span>
-
-                        {incrementProduct === cartBox.productToken ? (
-                          <>
-                            <span className=" d-flex align-items-center justify-content-center">
-                              <Spinner animation="border" role="status" size='sm' className='store-spinner'>
-                                <span className="visually-hidden">Loading...</span>
-                              </Spinner>
-                            </span>
-                          </>
-                        ) : (
-                          <>{cartBox.productQuantity}</>
-                        )}
-
-                      </span>
-                      <button onClick={() => handleIncreaseQuantity(cartBox.productToken, cartBox.productQuantity, cartBox.maximumQuantity
-                      )}><BsPlusLg /></button>
-                    </div> */}
                   </div>
                 </div>
               })}
@@ -177,8 +157,7 @@ const Cart = () => {
                 <span>AMOUNT:</span> {formatNumberWithCommas(calculateTotalPrice(cartProduct))}
               </div>
               <div className="cartdetailsbuttondiv">
-                <PaystackButton amount={calculateTotalPrice(cartProduct)} email={userData.email} />
-                {/* <button onClick={() => initializePayment(onSuccess, onClose)}>PAY NOW</button> */}
+                <PaystackButton product={cartProduct} amount={cartProduct.length > 0 && calculateTotalPrice(cartProduct)} email={userData.email} />
               </div>
             </div>
           </div>

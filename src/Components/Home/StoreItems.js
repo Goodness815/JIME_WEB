@@ -72,7 +72,7 @@ const StoreItems = ({ title, loading, allProduct }) => {
   }
   if (loading) {
     return <div className="store-cont-main">
-      <div className="stores-cont">
+      <div className="stores-cont" style={{ gridTemplateColumns: '60% 40%' }}>
         <h5>Fetching products..</h5>
       </div>
 

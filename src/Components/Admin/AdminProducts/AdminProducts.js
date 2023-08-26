@@ -198,12 +198,13 @@ const AdminProducts = () => {
                 const { productName, productPrice, productDesc, productImage, id } = allProduct;
                 return (
                   <div key={id} className="each-apc" >
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card className="adminCard" sx={{ maxWidth: 345 }}>
                       <CardMedia
                         component="img"
                         alt="green iguana"
                         height="160"
                         image={productImage}
+                        className="adminProductImage"
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">

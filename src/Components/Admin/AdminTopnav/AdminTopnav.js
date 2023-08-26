@@ -18,7 +18,9 @@ import axios from "axios";
 const AdminTopnav = ({ status, setStatus, search, setSearch }) => {
   const adminData = JSON.parse(localStorage.getItem('adminData'))
   const [show, setShow] = useState(false);
-
+  function getFirstLetter(str) {
+    return str.charAt(0);
+  }
 
 
   const handleClose = (e) => {
@@ -100,7 +102,7 @@ const AdminTopnav = ({ status, setStatus, search, setSearch }) => {
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Navbar.Brand href="#">
-            <div className="logo-cont-a">ST</div>
+            <div className="logo-cont-a">{getFirstLetter(adminData.fname)}{getFirstLetter(adminData.lname)}</div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -109,7 +111,7 @@ const AdminTopnav = ({ status, setStatus, search, setSearch }) => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link onClick={handleShow} href="#action2">Add Products</Nav.Link>
 
             </Nav>

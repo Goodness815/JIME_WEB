@@ -1,11 +1,53 @@
 .home-cont {
   width: 100%;
-  // height: 100vh;
-  // margin-top: 60px;
-  // padding-bottom: 60px;
-  // border:3px solid blue;
-  // margin-left: 4%;
-  // display: flex;
+}
+.caro-cont {
+  margin-top: 70px;
+  background-color: #ffc16f;
+  width: 100%;
+  overflow: hidden;
+  height: 50vh;
+}
+.caro-contInner {
+  background: linear-gradient(
+      to right,
+      rgba(223, 0, 0, 0.479),
+      rgba(255, 217, 0, 0)
+    ),
+    url("../../assets/banner.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  padding: 0px 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.contTextInner {
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.contTextInner h2 {
+  font-size: 45px;
+  font-weight: 800;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.contTextInner p {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.contTextInner button {
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 5px;
+  padding: 8px 30px;
+  background-color: #182030;
+  color: white;
+  margin-top: 20px;
 }
 
 @media (max-width: 534px) {
@@ -13,67 +55,10 @@
     width: 100%;
     margin-left: 0 !important;
   }
-
-  .caro-cont {
-    margin-top: 60px;
-  }
 }
 
 .home-whole-cont {
   display: flex;
-}
-
-.carousel-caption {
-  // position: absolute !important;
-  top: 15% !important;
-  text-align: left !important;
-  left: 10% !important;
-
-  h3 {
-    font-size: 50px;
-    transition: 0.2s ease-in;
-  }
-
-  p {
-    font-size: 18px;
-    transition: 0.2s ease-in;
-  }
-
-  h4 {
-    width: 50%;
-    transition: 0.2s ease-in;
-  }
-  .bannerButton {
-    margin-top: 30px;
-  }
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  display: none !important;
-}
-
-.carousel {
-  background-color: antiquewhite;
-  width: 100%;
-  overflow: hidden;
-  height: 60vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.carousel-item > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-.carousel-item,
-.carousel-inner {
-  overflow-y: hidden !important;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .trending {
@@ -143,13 +128,7 @@
 
 // GRIDING MY STORE ITEM
 .stores-cont {
-  // display: flex;
-  // align-items: center;
-  // flex-basis: 22.5% 22.5% 22.5% 22.5%;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
   display: grid;
-
   grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
   justify-content: space-between;
   align-items: center;
@@ -157,78 +136,61 @@
   grid-column-gap: 30px;
 }
 
-@media (max-width: 1200px) {
-  .carousel-caption {
-    top: 20% !important;
-  }
-}
 @media (max-width: 1064px) {
   .stores-cont {
     display: grid;
     grid-template-columns: 32% 32% 32%;
   }
-  .carousel {
-    height: 50vh;
-  }
 }
-@media (max-width: 840px) {
-  .carousel-caption {
-    top: 30% !important;
-    left: 10% !important;
-  }
-}
+
 @media (max-width: 858px) {
   .stores-cont {
     display: grid;
     grid-template-columns: 45% 45%;
   }
-  .carousel-caption .bannerButton {
-    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .caro-contInner {
+    padding: 0px 20px;
+  }
+  .contTextInner h2 {
+    font-size: 35px;
+  }
+  .contTextInner p {
+    font-size: 15px;
+  }
+  .contTextInner button {
+    font-size: 15px;
+    padding: 5px 20px;
   }
 }
 
-@media (max-width: 908px) {
-  .carousel-caption {
-    h3 {
-      font-size: 35px;
-    }
-
-    p {
-      font-size: 15px;
-    }
-  }
-}
-
-@media (max-width: 662px) {
-  .carousel-caption {
-    h3 {
-      font-size: 30px;
-    }
-
-    p {
-      font-size: 12px;
-    }
-
-    button {
-      margin-top: 10px;
-      font-size: 10px !important;
-    }
+@media (max-width: 840px) {
+  .caro-cont {
+    margin-top: 120px;
   }
 }
 @media (max-width: 580px) {
-  .carousel {
-    height: auto;
+  .caro-cont {
+    height: 40vh;
   }
-  .carousel-caption {
-    h3 {
-      font-size: 22px;
-    }
-
-    p {
-      font-size: 10px;
-    }
+  .contTextInner button {
+    margin-top: 10px;
   }
-  .carousel-caption .bannerButton {
-    margin-top: 5px;
+}
+@media (max-width: 480px) {
+  .contTextInner h2 {
+    font-size: 28px;
+  }
+  .contTextInner p {
+    font-size: 14px;
+    max-width: 80%;
+  }
+  .contTextInner button {
+    font-size: 13px;
+  }
+  .caro-cont {
+    height: 35vh;
   }
 }

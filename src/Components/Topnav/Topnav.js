@@ -27,11 +27,13 @@ const Topnav = () => {
     <div className="topnav-cont align-items-center shadow">
 
       <div className="topnav-cont-top d-flex align-items-center justify-content-between w-100">
-        <img src={logo} alt="" className="logo" style={{ marginLeft: '30px' }} />
+        <Link to='/'>
+          <img src={logo} alt="" className="logo" style={{ marginLeft: '30px' }} />
+        </Link>
 
         <form onSubmit={handleSearch} className="search-cont">
           <div className="search-icon">
-            <SearchIcon type='submit' className="icon" />
+            <SearchIcon type='submit' className="icon" onClick={handleSearch} />
           </div>
           <input type="text" value={search} placeholder="what are you looking for......" required onChange={(e) => setSearch(e.target.value)} />
         </form>

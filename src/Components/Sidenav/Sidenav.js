@@ -61,7 +61,7 @@ const Sidenav = () => {
 
       <>
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header  className="text-white" >
+          <Offcanvas.Header className="text-white" >
             <Offcanvas.Title className='w-100 mb-4 d-flex align-items-center justify-content-between'>
               <div className="logo-cont h-100">ST</div>
               <div className="closeicon" onClick={handleClose} sx={{ cursor: 'pointer' }}><CloseIcon /></div>
@@ -88,19 +88,18 @@ const Sidenav = () => {
                 <ListItemText style={{ color: "white" }} primary="Cart" />
               </ListItemButton>
 
-              <ListItemButton onClick={(e) => gotoOrders()} >
-                <ListItemIcon>
-                  <StoreMallDirectoryOutlinedIcon />
+              <ListItemButton style={{ color: "white" }} onClick={(e) => gotoOrders()} >
+                <ListItemIcon style={{ color: "white" }}>
+                  <StoreMallDirectoryOutlinedIcon style={{ color: "white" }} />
                 </ListItemIcon>
-                <ListItemText primary="Orders" />
+                <ListItemText style={{ color: "white" }} primary="Orders" />
               </ListItemButton>
-              <ListItemButton onClick={(e) => handleLogout()} >
-                <ListItemIcon>
-                  <ExitToAppOutlinedIcon fontSize="large" />
+              <ListItemButton style={{ color: "white" }} onClick={(e) => handleLogout()} >
+                <ListItemIcon style={{ color: "white" }}>
+                  <ExitToAppOutlinedIcon style={{ color: "white" }} className="icon" />
                 </ListItemIcon>
-                <ListItemText primary="Logout" />
+                <ListItemText style={{ color: "white" }} primary="Logout" />
               </ListItemButton>
-
             </List>
           </Offcanvas.Body>
         </Offcanvas>
