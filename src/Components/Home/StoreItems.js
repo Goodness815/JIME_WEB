@@ -56,6 +56,7 @@ const StoreItems = ({ title, loading, allProduct }) => {
   const handleAddCart = async (allProduct) => {
     setCartLoader([...cartLoader, allProduct.id])
     try {
+      // const res = await axios.post(`http://localhost:5000/api/v1/products/cart`, { id: userData.id, product: allProduct })
       const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products/cart`, { id: userData.id, product: allProduct })
 
       setCartLoader(cartLoader.filter(id => id !== allProduct.id))

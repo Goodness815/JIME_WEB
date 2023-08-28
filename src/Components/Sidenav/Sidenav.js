@@ -21,7 +21,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import "./Sidenav.scss";
 
 const Sidenav = () => {
-
+  const userData = JSON.parse(localStorage.getItem('userData'))
   // BOOTSTRAP OFF CANVAS
   const [show, setShow] = useState(false);
 
@@ -52,6 +52,10 @@ const Sidenav = () => {
     navigate('/login')
   }
 
+  function getFirstLetter(str) {
+    return str.charAt(0);
+  }
+
   return (
     // <div>
     <div className="sidenav-cont">
@@ -63,7 +67,7 @@ const Sidenav = () => {
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header className="text-white" >
             <Offcanvas.Title className='w-100 mb-4 d-flex align-items-center justify-content-between'>
-              <div className="logo-cont h-100">ST</div>
+              <div className="logo-cont h-100">{getFirstLetter(userData.fname)}{getFirstLetter(userData.lname)}</div>
               <div className="closeicon" onClick={handleClose} sx={{ cursor: 'pointer' }}><CloseIcon /></div>
             </Offcanvas.Title>
           </Offcanvas.Header >
@@ -94,12 +98,12 @@ const Sidenav = () => {
                 </ListItemIcon>
                 <ListItemText style={{ color: "white" }} primary="Orders" />
               </ListItemButton>
-              <ListItemButton style={{ color: "white" }} onClick={(e) => handleLogout()} >
+              {userData && <ListItemButton style={{ color: "white" }} onClick={(e) => handleLogout()} >
                 <ListItemIcon style={{ color: "white" }}>
                   <ExitToAppOutlinedIcon style={{ color: "white" }} className="icon" />
                 </ListItemIcon>
                 <ListItemText style={{ color: "white" }} primary="Logout" />
-              </ListItemButton>
+              </ListItemButton>}
             </List>
           </Offcanvas.Body>
         </Offcanvas>
