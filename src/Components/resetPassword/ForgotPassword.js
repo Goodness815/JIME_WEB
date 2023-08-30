@@ -22,70 +22,9 @@ const ForgotPassword = () => {
         }));
     };
 
-    function generateRandomString(length) {
-        const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            result += characters[randomIndex];
-        }
-        return result;
-    }
-
-    function generateRandomStringsArray(count, length) {
-        const randomStringsArray = [];
-        for (let i = 0; i < count; i++) {
-            const randomString = generateRandomString(length - 2); // Reserve space for special character
-            const specialCharacter = '!@#$%^&*()';
-            const randomIndex = Math.floor(Math.random() * specialCharacter.length);
-            const stringWithSpecialChar =
-                randomString.slice(0, randomIndex) +
-                specialCharacter[randomIndex] +
-                randomString.slice(randomIndex);
-            randomStringsArray.push(stringWithSpecialChar);
-        }
-        return randomStringsArray;
-    }
-
-    function getSelectedString(stringsArray) {
-        if (!Array.isArray(stringsArray) || stringsArray.length === 0) {
-            return null; // Handle invalid input
-        }
-
-        if (stringsArray.length === 1) {
-            return stringsArray[0]; // Return the only available string
-        }
-
-        const arrayLength = stringsArray.length;
-        let previousIndex = -1;
-
-        function getRandomUniqueIndex() {
-            let newIndex = Math.floor(Math.random() * arrayLength);
-            while (newIndex === previousIndex) {
-                newIndex = Math.floor(Math.random() * arrayLength);
-            }
-            return newIndex;
-        }
-
-        const newIndex = getRandomUniqueIndex();
-        previousIndex = newIndex;
-
-        return stringsArray[newIndex];
-    }
-
-
-
-    const numberOfStrings = 30;
-    const stringLength = 8;
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // const randomArray = generateRandomStringsArray(numberOfStrings, stringLength)
-        // console.log(randomArray)
-        // const selectedString = getSelectedString(randomArray)
-        // console.log(selectedString)
-        // console.log(randomArray.includes(selectedString))
         // return;
         setLoading(true)
         try {
