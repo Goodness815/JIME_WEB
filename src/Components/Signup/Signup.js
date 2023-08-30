@@ -33,6 +33,7 @@ const Signup = () => {
     e.preventDefault()
     setLoading(true)
     try {
+      // const res = await axios.post(`http://localhost:5000/api/v1/auth/register`, formData)
       const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/auth/register`, formData)
       setLoading(false)
       if (res.data.success) {

@@ -66,6 +66,10 @@ const Login = () => {
               Don't have an Account?{" "}
               <Link to="/Signup" className="sign-b"> Sign up </Link>{" "}
             </p>
+            <p>
+              Can't remember your password?{" "}
+              <Link to="/forgot" className="sign-b"> Forgot password </Link>{" "}
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="signup-form">
@@ -75,6 +79,7 @@ const Login = () => {
               label="Email"
               variant="outlined"
               name="email"
+              type="email"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -86,6 +91,7 @@ const Login = () => {
               variant="outlined"
               className="passwordField"
               name="password"
+              type="password"
               value={formData.password}
               onChange={handleInputChange}
               required

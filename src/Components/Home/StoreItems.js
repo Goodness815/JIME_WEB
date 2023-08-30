@@ -54,6 +54,9 @@ const StoreItems = ({ title, loading, allProduct }) => {
 
 
   const handleAddCart = async (allProduct) => {
+    if (!userData) {
+      return navigate('/login')
+    }
     setCartLoader([...cartLoader, allProduct.id])
     try {
       // const res = await axios.post(`http://localhost:5000/api/v1/products/cart`, { id: userData.id, product: allProduct })

@@ -8,8 +8,8 @@ export const PaystackButton = ({ product, amount, email, buttonBase }) => {
     const [loader, setLoader] = useState(false)
     const [show, setShow] = useState(false)
     const [updatedUserData, setUpdatedUserData] = useState(JSON.parse(localStorage.getItem('updatedUserData')) || {
-        fullName: userData.name || '',
-        email: userData.email || '',
+        fullName: userData ? userData?.name : '',
+        email: userData ? userData?.email : '',
         phoneNumber: '',
         address: ''
     })

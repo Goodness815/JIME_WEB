@@ -67,7 +67,7 @@ const Sidenav = () => {
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header className="text-white" >
             <Offcanvas.Title className='w-100 mb-4 d-flex align-items-center justify-content-between'>
-              <div className="logo-cont h-100">{getFirstLetter(userData.fname)}{getFirstLetter(userData.lname)}</div>
+              <div className="logo-cont h-100">{getFirstLetter(userData?.fname ? userData?.fname : 'JI')}{getFirstLetter(userData?.lname ? userData?.lname : "EI")}</div>
               <div className="closeicon" onClick={handleClose} sx={{ cursor: 'pointer' }}><CloseIcon /></div>
             </Offcanvas.Title>
           </Offcanvas.Header >

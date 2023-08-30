@@ -68,6 +68,7 @@ const AdminTopnav = ({ status, setStatus, search, setSearch }) => {
     e.preventDefault()
     setLoading(true)
     try {
+      // const res = await axios.post(`http://localhost:5000/api/v1/products`, productData, {
       const res = await axios.post(`${process.env.REACT_APP_DEV_URL}/products`, productData, {
         headers: {
           "Content-Type": "application/json",

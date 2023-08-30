@@ -14,6 +14,8 @@ import { Toaster } from 'react-hot-toast';
 import "./App.css";
 import Orders from "./Components/orders/Orders";
 import SearchResult from "./Components/Stores/SearchResult";
+import ForgotPassword from "./Components/resetPassword/ForgotPassword";
+import ResetPass from "./Components/resetPassword/ResetPassword";
 
 
 function App() {
@@ -43,8 +45,10 @@ function App() {
           <Route path="/orders" element={<Orders />} exact />
 
 
-          <Route path="/Login" element={<Login />} exact />
-          <Route path="/Signup" element={<Signup />} exact />
+          <Route path="/forgot" element={<ForgotPassword />} exact />
+          <Route path="/forgot/:userId/:token" element={<ResetPass />} exact />
+          <Route path="/login" element={<Login />} exact />
+          <Route path="/signup" element={<Signup />} exact />
         </Routes>
       </Router>
     </div>

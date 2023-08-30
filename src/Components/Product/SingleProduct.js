@@ -84,7 +84,7 @@ const SingleProduct = () => {
 
             <div className="btn-cont">
               <PaystackButton product={[currentData]} amount={currentData?.productPrice} email={userData?.email} buttonBase={true} />
-              <Button vriant="outlined" style={{ color: '#182030' }} onClick={userData ? () => handleAddCart(currentData) : () => navigate('/login')}>{loading ? "Adding.." : "Add to cart"}</Button>
+              <Button vriant="outlined" style={{ color: '#182030' }} onClick={!userData ? () => navigate('/login') : () => handleAddCart(currentData)}>{loading ? "Adding.." : "Add to cart"}</Button>
             </div>
           </div>
         </div>
